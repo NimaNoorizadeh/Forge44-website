@@ -28,10 +28,6 @@ jobs:
           cache: npm
       - uses: actions/configure-pages@v5
         id: pages
-      - run: |
-          rm package-lock.json
-          npm install --package-lock-only --ignore-scripts
-      - run: node -e "console.log('LOCKFILE_DATA=' + require('fs').readFileSync('package-lock.json').toString('base64'))"
       - run: npm ci
       - run: npm run build -- --base="${{ steps.pages.outputs.base_path }}/"
       - uses: actions/upload-pages-artifact@v3
