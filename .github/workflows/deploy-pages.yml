@@ -28,7 +28,9 @@ jobs:
           cache: npm
       - uses: actions/configure-pages@v5
         id: pages
-      - run: npm install --package-lock-only --ignore-scripts
+      - run: |
+          rm package-lock.json
+          npm install --package-lock-only --ignore-scripts
       - uses: actions/upload-artifact@v4
         with:
           name: repaired-lockfile
